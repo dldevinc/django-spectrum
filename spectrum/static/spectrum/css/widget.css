@@ -1,0 +1,47 @@
+.vColorField {
+  display: flex;
+  width: 190px;
+  justify-content: space-between;
+}
+
+.vColorField input[type="number"] {
+  width: 80px;
+  box-sizing: border-box;
+}
+
+.sp-replacer {
+  padding: 2px 3px 2px 2px;
+  width: 100px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid #d0d0d0;
+  box-sizing: border-box;
+}
+
+.errors .sp-replacer {
+  border-color: #ba2121;
+}
+
+.sp-initial span {
+  height: 24px;
+}
+
+.sp-input {
+  font-size: 14px !important;
+  border: 1px solid #b0b0b0;
+}
+
+.sp-preview {
+  overflow: hidden;
+  margin-right: 2px;
+  width: 80px;
+  height: 28px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.sp-dd {
+  padding: 5px 0;
+  width: 10px;
+  text-align: center;
+}

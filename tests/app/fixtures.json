@@ -1,0 +1,26 @@
+[
+{
+  "model": "app.example",
+  "pk": 1,
+  "fields": {
+    "name": "Yellow 50",
+    "color": "FFFF00:0.5"
+  }
+},
+{
+  "model": "app.example",
+  "pk": 2,
+  "fields": {
+    "name": "Red",
+    "color": "FF0000:1"
+  }
+},
+{
+  "model": "app.example",
+  "pk": 3,
+  "fields": {
+    "name": "Blue 60",
+    "color": "0000FF:0.6"
+  }
+}
+]
