@@ -17,7 +17,7 @@ DESCRIPTION = 'Provides an colorpicker field for use in Django models'
 URL = 'https://github.com/dldevinc/django-spectrum'
 EMAIL = 'x896321475@gmail.com'
 AUTHOR = 'Mihail Mishakin'
-REQUIRES_PYTHON = '>=3.6'
+REQUIRES_PYTHON = '>=3.5'
 VERSION = '0.3'
 
 # What packages are required for this module to be executed?
@@ -120,6 +120,7 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],

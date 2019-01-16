@@ -5,7 +5,7 @@ Provides an colorpicker field for use in Django models.
 
 ## Compatibility
 * `django` >= 2.1.5
-* `python` >= 3.6
+* `python` >= 3.5
 
 ## Quickstart
 Install django-spectrum:
