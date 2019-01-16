@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
+from .color import Color
 
 
 class ColorWidget(forms.MultiWidget):
@@ -36,6 +37,8 @@ class ColorWidget(forms.MultiWidget):
         )
 
     def decompress(self, value):
-        if value:
+        if isinstance(value, str):
+            return [value, 1]
+        elif isinstance(value, Color):
             return [value.hex, value.opacity]
         return [None, None]

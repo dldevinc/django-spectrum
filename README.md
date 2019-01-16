@@ -13,6 +13,15 @@ Install django-spectrum:
 pip install django-spectrum
 ```
 
+Add it to your `INSTALLED_APPS` list:
+
+```python
+INSTALLED_APPS = (
+    ...
+    'spectrum',
+)
+```
+
 Then add it to your models:
 ```python
 from spectrum.fields import ColorField
