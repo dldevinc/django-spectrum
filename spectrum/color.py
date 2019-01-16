@@ -68,7 +68,7 @@ class Color:
         try:
             opacity = Decimal(value)
         except Exception:
-            raise TypeError('conversion from %s to Decimal is not supported' % type(value).__name__)
+            raise TypeError('invalid opacity: %s(%r)' % (value, value))
         if opacity < 0 or opacity > 1:
             raise ValueError('opacity must be between 0 and 1')
         self._rgba[3] = round(opacity * 100)

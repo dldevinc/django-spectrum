@@ -6,12 +6,15 @@ from . import forms
 
 
 def encode_color(color):
-    return '{}:{}'.format(color.hex_code, color.opacity)
+    if color.opacity == 1:
+        return color.hex_code
+    else:
+        return '{}:{}'.format(color.hex_code, color.opacity)
 
 
 def decode_color(color_string):
     color, _, opacity = color_string.partition(':')
-    return Color(color, opacity)
+    return Color(color, opacity or 1)
 
 
 class ColorField(models.Field):
@@ -21,7 +24,7 @@ class ColorField(models.Field):
     description = _("RGB/RGBA color")
 
     def __init__(self, *args, **kwargs):
-        kwargs['max_length'] = 10
+        kwargs['max_length'] = 12
         super().__init__(*args, **kwargs)
 
     def get_internal_type(self):

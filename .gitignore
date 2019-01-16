@@ -10,3 +10,6 @@ eggs/
 
 env/
 venv/
+
+tests/database.db
+tests/app/fixtures.json

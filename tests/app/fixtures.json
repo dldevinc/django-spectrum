@@ -3,8 +3,8 @@
   "model": "app.example",
   "pk": 1,
   "fields": {
-    "name": "Yellow 50",
-    "color": "FFFF00:0.5"
+    "name": "Yellow 55",
+    "color": "FFFF00:0.55"
   }
 },
 {
@@ -12,7 +12,7 @@
   "pk": 2,
   "fields": {
     "name": "Red",
-    "color": "FF0000:1"
+    "color": "FF0000"
   }
 },
 {
