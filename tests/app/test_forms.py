@@ -18,6 +18,28 @@ class ColorFieldTest(TestCase):
         self.assertEqual(color.hex, '#DABACC')
         self.assertEqual(color.opacity, 0.5)
 
+    def test_invalid_color(self):
+        form = ColorForm({
+            'color_0': '#AABBCCDD',
+            'color_1': '1'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['color'].data[0].code, 'invalid_color')
+
+        form = ColorForm({
+            'color_0': '#FF',
+            'color_1': '1'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['color'].data[0].code, 'invalid_color')
+
+        form = ColorForm({
+            'color_0': 'yellow',
+            'color_1': '1'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['color'].data[0].code, 'invalid_color')
+
     def test_invalid_opacity(self):
         form = ColorForm({
             'color_0': '#daBAcc',
@@ -32,10 +54,3 @@ class ColorFieldTest(TestCase):
         })
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors['color'].data[0].code, 'max_value')
-
-        form = ColorForm({
-            'color_0': '#daBAcc',
-            'color_1': ''
-        })
-        self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors['color'].data[0].code, 'incomplete')
