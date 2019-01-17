@@ -1,5 +1,6 @@
 from django import forms
 from django.core import exceptions
+from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 from .color import Color
 from .widgets import ColorWidget
@@ -16,12 +17,11 @@ class ColorField(forms.MultiValueField):
         if not fields:
             fields = (
                 forms.CharField(
-                    min_length=4,
-                    max_length=7,
+                    validators=[
+                        RegexValidator(r'^#?[0-9a-fA-F]{6}$', code='invalid_color'),
+                    ],
                     error_messages={
                         'incomplete': _('Hex value required.'),
-                        'min_length': _('Ensure hex value has at least %(limit_value)d characters (it has %(show_value)d).'),
-                        'max_length': _('Ensure hex value has at most %(limit_value)d characters (it has %(show_value)d).'),
                     }
                 ),
                 forms.DecimalField(

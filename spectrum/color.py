@@ -79,4 +79,9 @@ class Color:
 
     @property
     def rgba(self):
-        return 'rgba({:d},{:d},{:d},{})'.format(*self._rgba[:3], self.opacity)
+        return 'rgba({:d},{:d},{:d},{})'.format(
+            self._rgba[0],
+            self._rgba[1],
+            self._rgba[2],
+            self.opacity
+        )

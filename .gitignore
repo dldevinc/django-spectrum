@@ -8,8 +8,7 @@ eggs/
 *.egg
 *.pyc
 
-env/
-venv/
+env*
 
 tests/database.db
 tests/app/fixtures.json
