@@ -18,7 +18,7 @@ class ColorField(forms.MultiValueField):
             fields = (
                 forms.CharField(
                     validators=[
-                        RegexValidator(r'^#?[0-9a-fA-F]{6}$', code='invalid_color'),
+                        RegexValidator(r'^#?(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$', code='invalid_color'),
                     ],
                     error_messages={
                         'incomplete': _('Hex value required.'),
