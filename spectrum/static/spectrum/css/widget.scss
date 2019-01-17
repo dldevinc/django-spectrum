@@ -10,7 +10,8 @@
 }
 
 .sp-replacer {
-  padding: 2px 3px 2px 2px;
+  position: relative;
+  padding: 2px 0 2px 2px;
   width: 100px;
   border-radius: 4px;
   background-color: #ffffff;
@@ -33,15 +34,18 @@
 
 .sp-preview {
   overflow: hidden;
-  margin-right: 2px;
+  margin-right: 0;
   width: 80px;
-  height: 28px;
+  height: 100%;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 .sp-dd {
-  padding: 5px 0;
-  width: 10px;
+  position: relative;
+  margin-top: -8px;
+  top: 50%;
+  width: 16px;
+  line-height: 1;
   text-align: center;
 }

@@ -10,7 +10,7 @@ class ColorWidget(forms.MultiWidget):
         widgets = (
             forms.TextInput(attrs={
                 'maxlength': 7,
-                'pattern': '#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})'
+                'pattern': '#?(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})'
             }),
             forms.NumberInput(attrs={
                 'min': 0,
