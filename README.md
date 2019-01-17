@@ -4,8 +4,8 @@ Provides an colorpicker field for use in Django models.
 ![django-spectrum](http://dl3.joxi.net/drive/2019/01/16/0025/1750/1701590/90/52ee08bef0.png)
 
 ## Compatibility
-* `django` >= 2.1.5
-* `python` >= 3.5
+* `django` >= 2.0
+* `python` >= 3.4
 
 ## Quickstart
 Install django-spectrum:

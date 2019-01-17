@@ -103,7 +103,6 @@ class TestColor(TestCase):
             0.125: Decimal('0.12'),
             '0': Decimal('0'),
             '0.123': Decimal('0.12'),
-            '_0.3__': Decimal('0.3'),      # acceptable by decimal.Decimal
             Decimal('0.543'): Decimal('0.54'),
         }
 
