@@ -18,7 +18,7 @@ URL = 'https://github.com/dldevinc/django-spectrum'
 EMAIL = 'x896321475@gmail.com'
 AUTHOR = 'Mihail Mishakin'
 REQUIRES_PYTHON = '>=3.4'
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -101,6 +101,10 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=['spectrum'],
+    package_data={'spectrum': [
+        'static/spectrum/*/*',
+        'templates/spectrum/*',
+    ]},
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
 
