@@ -31,7 +31,7 @@ class MyModel(models.Model):
 ```
 
 ## Color instance
-```
+```python
 >>> from spectrum.color import Color
 
 >>> rgb_color = Color('#FFFF00')
