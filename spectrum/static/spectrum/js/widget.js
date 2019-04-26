@@ -1,7 +1,8 @@
 (function($) {
     'use strict';
 
-    function initWidgets(root = document.body) {
+    function initWidgets(root) {
+        root = (typeof root === 'undefined') ? document.body : root;
         root.querySelectorAll('.vColorField input[type="text"]').forEach(function(widget) {
             if (!widget.closest('.empty-form')) {
                 $(widget).spectrum({
