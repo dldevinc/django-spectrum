@@ -4,11 +4,11 @@ dist/
 eggs/
 .eggs/
 .idea/
+.tox
 *.egg-info/
 *.egg
 *.pyc
 
-env*
-
-tests/database.db
-tests/app/fixtures.json
+.env/
+env/
+venv/

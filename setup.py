@@ -9,7 +9,7 @@ import os
 import sys
 from shutil import rmtree
 
-from setuptools import setup, Command
+from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'django-spectrum'
@@ -18,15 +18,22 @@ URL = 'https://github.com/dldevinc/django-spectrum'
 EMAIL = 'x896321475@gmail.com'
 AUTHOR = 'Mihail Mishakin'
 REQUIRES_PYTHON = '>=3.4'
-VERSION = '0.0.4'
+VERSION = '0.1.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'Django >= 2.0',
+    'django>=1.11',
 ]
 
 # What packages are optional?
-EXTRAS = {}
+EXTRAS = {
+
+}
+
+KEYWORDS = [
+    'django',
+    'color',
+]
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
@@ -100,10 +107,11 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
+    license='BSD',
     packages=['spectrum'],
     package_data={'spectrum': [
-        'static/spectrum/*/*',
-        'templates/spectrum/*',
+        'static/**/*',
+        'templates/**/*',
     ]},
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
@@ -113,8 +121,11 @@ setup(
     # },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
+    tests_require=[
+        'tox',
+    ],
+    keywords=KEYWORDS,
     include_package_data=True,
-    license='MIT',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
@@ -132,5 +143,4 @@ setup(
     cmdclass={
         'upload': UploadCommand,
     },
-    keywords='django color',
 )
