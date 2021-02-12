@@ -1,12 +1,12 @@
+import pytest
 from decimal import Decimal
-from django.test import TestCase
 from spectrum.color import Color
 
 
-class TestColor(TestCase):
+class TestColor:
     def test_default_opacity(self):
         color = Color('FFFFFF')
-        self.assertEqual(color.opacity, 1)
+        assert color.opacity == 1
 
     def test_invalid_color_type(self):
         tests = [
@@ -17,9 +17,8 @@ class TestColor(TestCase):
         ]
 
         for value in tests:
-            with self.subTest(value):
-                with self.assertRaises(TypeError):
-                    Color(value)
+            with pytest.raises(TypeError):
+                Color(value)
 
     def test_invalid_color_value(self):
         tests = [
@@ -44,9 +43,8 @@ class TestColor(TestCase):
         ]
 
         for value in tests:
-            with self.subTest(value):
-                with self.assertRaises(ValueError):
-                    Color(value)
+            with pytest.raises(ValueError):
+                Color(value)
 
     def test_invalid_opacity_type(self):
         tests = [
@@ -58,9 +56,8 @@ class TestColor(TestCase):
         ]
 
         for value in tests:
-            with self.subTest(value):
-                with self.assertRaises(TypeError):
-                    Color('FFFFFF', value)
+            with pytest.raises(TypeError):
+                Color('FFFFFF', value)
 
     def test_invalid_opacity_value(self):
         tests = [
@@ -72,9 +69,8 @@ class TestColor(TestCase):
         ]
 
         for value in tests:
-            with self.subTest(value):
-                with self.assertRaises(ValueError):
-                    Color('FFFFFF', value)
+            with pytest.raises(ValueError):
+                Color('FFFFFF', value)
 
     def test_hex(self):
         tests = {
@@ -89,8 +85,7 @@ class TestColor(TestCase):
         }
 
         for value, output in tests.items():
-            with self.subTest(value):
-                self.assertEqual(Color(value).hex, output)
+            assert Color(value).hex == output
 
     def test_opacity(self):
         tests = {
@@ -107,32 +102,31 @@ class TestColor(TestCase):
         }
 
         for value, output in tests.items():
-            with self.subTest(value):
-                self.assertEqual(Color('c0ffee', value).opacity, output)
+            assert Color('c0ffee', value).opacity == output
 
     def test_str(self):
         color = Color('#60A')
-        self.assertEqual(str(color), '#6600AA')
+        assert str(color) == '#6600AA'
 
         color = Color('#ABC', 1)
-        self.assertEqual(str(color), '#AABBCC')
+        assert str(color) == '#AABBCC'
 
         color = Color('#60A', 0.8)
-        self.assertEqual(str(color), 'rgba(102,0,170,0.8)')
+        assert str(color) == 'rgba(102,0,170,0.8)'
 
         color = Color('#BADA00', 1)
-        self.assertEqual(str(color), '#BADA00')
+        assert str(color) == '#BADA00'
 
     def test_comparison(self):
-        self.assertNotEqual(Color('#FFFF00'), 'FFFF00')
+        assert Color('#FFFF00') != 'FFFF00'
 
-        self.assertEqual(Color('#60A'), '#6600AA')
-        self.assertEqual(Color('#c0FFeE'), '#C0FFEE')
-        self.assertEqual(Color('#c0FFeE'), '#c0ffee')
-        self.assertEqual(Color('#60A'), Color('#6600AA'))
-        self.assertEqual(Color('#c0FFeE'), Color('#C0FFEE'))
-        self.assertEqual(Color('#c0FFeE'), Color('#c0ffee'))
-        self.assertNotEqual(Color('#AABBCC', 0.99), '#AABBCC')
+        assert Color('#60A') == '#6600AA'
+        assert Color('#c0FFeE') == '#C0FFEE'
+        assert Color('#c0FFeE') == '#c0ffee'
+        assert Color('#60A') == Color('#6600AA')
+        assert Color('#c0FFeE') == Color('#C0FFEE')
+        assert Color('#c0FFeE') == Color('#c0ffee')
+        assert Color('#AABBCC', 0.99) != '#AABBCC'
 
     def test_rgb(self):
         tests = {
@@ -143,8 +137,7 @@ class TestColor(TestCase):
         }
 
         for value, output in tests.items():
-            with self.subTest(value):
-                self.assertEqual(Color(value).rgb, output)
+            assert Color(value).rgb == output
 
     def test_rgba(self):
         tests = {
@@ -156,5 +149,4 @@ class TestColor(TestCase):
         }
 
         for value, output in tests.items():
-            with self.subTest(value):
-                self.assertEqual(Color(*value).rgba, output)
+            assert Color(*value).rgba == output

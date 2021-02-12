@@ -1,11 +1,14 @@
 # django-spectrum
-Provides an colorpicker field for use in Django models.
+Provides a colorpicker field for use in Django models
 
-![django-spectrum](http://dl3.joxi.net/drive/2019/01/16/0025/1750/1701590/90/52ee08bef0.png)
+![django-spectrum](http://dl4.joxi.net/drive/2021/02/12/0025/1750/1701590/90/861af67e73.png)
+
+[![PyPI](https://img.shields.io/pypi/v/django-spectrum.svg)](https://pypi.org/project/django-spectrum/)
+[![Build Status](https://travis-ci.org/dldevinc/django-spectrum.svg?branch=master)](https://travis-ci.org/dldevinc/django-spectrum)
 
 ## Compatibility
 * `django` >= 1.11
-* `python` >= 3.4
+* `python` >= 3.5
 
 ## Quickstart
 Install django-spectrum:
@@ -14,24 +17,24 @@ pip install django-spectrum
 ```
 
 Add it to your `INSTALLED_APPS` list:
-
 ```python
 INSTALLED_APPS = (
     ...
-    'spectrum',
+    "spectrum",
 )
 ```
 
 Then add it to your models:
 ```python
+from django.db import models
 from spectrum.fields import ColorField
 
 class MyModel(models.Model):
-    color = ColorField(_('color'), default='#FFFF00')
+    color = ColorField(_("color"), default="#FFFF00")
 ```
 
 ## Color instance
-```python
+```
 >>> from spectrum.color import Color
 
 >>> rgb_color = Color('#FFFF00')
@@ -52,5 +55,12 @@ FFFF00
 0.5
 ```
 
-## License
-Copyright (c) 2018 Mihail Mishakin Released under the BSD license (see LICENSE)
+## Development and Testing
+After cloning the Git repository, you should install this
+in a virtualenv and set up for development:
+```shell script
+virtualenv .venv
+source .venv/bin/activate
+pip install -r ./requirements_dev.txt
+pre-commit install
+```
