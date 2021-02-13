@@ -4,48 +4,29 @@
   justify-content: space-between;
 }
 
-.vColorField input[type="number"] {
-  width: 90px;
-  box-sizing: border-box;
+.vColorField .pickr .pcr-button {
+  width: 4em;
 }
 
-.sp-replacer {
-  position: relative;
-  padding: 2px 0 2px 2px;
-  width: 100px;
-  border-radius: 4px;
-  background-color: #ffffff;
-  border: 1px solid #d0d0d0;
-  box-sizing: border-box;
+.pcr-app[data-theme=monolith] {
+  width: 16.4em;
+  font-size: 16px;
 }
 
-.errors .sp-replacer {
-  border-color: #ba2121;
+.pcr-app .pcr-interaction .pcr-result {
+  flex: 1 1 10em;
+  min-width: 10em;
 }
 
-.sp-initial span {
-  height: 24px;
+.pcr-app .pcr-interaction .pcr-save {
+  margin-left: auto;
+  padding: .45em .75em;
+  font-size: 0.875em;
+  background: #28a745;
+  order: 1;
 }
 
-.sp-input {
-  font-size: 14px !important;
-  border: 1px solid #b0b0b0;
-}
-
-.sp-preview {
-  overflow: hidden;
-  margin-right: 0;
-  width: 80px;
-  height: 100%;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.sp-dd {
-  position: relative;
-  margin-top: -8px;
-  top: 50%;
-  width: 16px;
-  line-height: 1;
-  text-align: center;
+.pcr-app .pcr-interaction .pcr-clear {
+  padding: .45em .75em;
+  font-size: 0.875em;
 }

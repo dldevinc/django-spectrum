@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "name": "Yellow 55",
-    "color": "FFFF00:0.55"
+    "color": "#FFFF008C"
   }
 },
 {
@@ -12,7 +12,7 @@
   "pk": 2,
   "fields": {
     "name": "Red",
-    "color": "FF0000"
+    "color": "#FF0000"
   }
 },
 {
@@ -20,7 +20,7 @@
   "pk": 3,
   "fields": {
     "name": "Blue 60",
-    "color": "0000FF:0.6"
+    "color": "#0000FF99"
   }
 }
 ]
