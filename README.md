@@ -4,7 +4,7 @@ Provides a colorpicker field for Django
 ![django-spectrum](http://joxi.ru/l2ZPn43iRE3yDr.png)
 
 [![PyPI](https://img.shields.io/pypi/v/django-spectrum.svg)](https://pypi.org/project/django-spectrum/)
-[![Build Status](https://travis-ci.org/dldevinc/django-spectrum.svg?branch=master)](https://travis-ci.org/dldevinc/django-spectrum)
+[![Build Status](https://travis-ci.com/dldevinc/django-spectrum.svg?branch=master)](https://travis-ci.org/dldevinc/django-spectrum)
 
 ## Compatibility
 * `django` >= 1.11
