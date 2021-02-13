@@ -62,25 +62,3 @@ False
 >>> print(c.hsla())
 "hsla(51, 100.0%, 50.0%, 0.5)"
 ```
-
-
-```
->>> from spectrum.color import Color
-
->>> rgb_color = Color('#FFFF00')
->>> print(rgb_color)
-#FFFF00
-
->>> rgba_color = Color('#FFFF00', 0.5)
->>> print(rgba_color)
-rgba(255,255,0,0.5)
-
->>> print(rgba_color.hex_code)
-FFFF00
-
->>> print(rgba_color.hex)
-#FFFF00
-
->>> print(rgba_color.opacity)
-0.5
-```
