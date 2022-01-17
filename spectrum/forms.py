@@ -3,7 +3,7 @@ from django.core import exceptions
 from django.utils.translation import gettext_lazy as _
 
 from .color import Color
-from .exceptions import InvalidColor
+from .exceptions import InvalidColorError
 from .widgets import ColorWidget
 
 
@@ -19,7 +19,7 @@ class ColorField(forms.CharField):
 
         try:
             return Color(value)
-        except InvalidColor:
+        except InvalidColorError:
             raise exceptions.ValidationError(
                 self.error_messages['invalid'], code='invalid'
             )

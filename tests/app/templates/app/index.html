@@ -1,1 +1,9 @@
 <h1>Index page</h1>
+
+<ol>
+  {% for item in items %}
+    <li>
+      <span style="color: {{ item.color }}">{{ item.name }}</span>
+    </li>
+  {% endfor %}
+</ol>

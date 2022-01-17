@@ -90,7 +90,7 @@ def format_color(value: ColorType) -> ColorBytes:
             try:
                 return format_hexa(hexa_match.group(1))
             except (ValueError, TypeError):
-                raise exceptions.InvalidColorValue(value)
+                raise exceptions.InvalidColorValueError(value)
 
         rgba_match = re_rgba.fullmatch(value)
         if rgba_match is not None:
@@ -101,13 +101,13 @@ def format_color(value: ColorType) -> ColorBytes:
             try:
                 return format_rgba(color_items)
             except (ValueError, TypeError):
-                raise exceptions.InvalidColorValue(value)
+                raise exceptions.InvalidColorValueError(value)
 
-        raise exceptions.InvalidColorValue(value)
+        raise exceptions.InvalidColorValueError(value)
     elif isinstance(value, Iterable):
         try:
             return format_color_bytes(value)
         except (ValueError, TypeError):
-            raise exceptions.InvalidColorValue(value)
+            raise exceptions.InvalidColorValueError(value)
     else:
-        raise exceptions.InvalidColorType(value)
+        raise exceptions.InvalidColorTypeError(value)
