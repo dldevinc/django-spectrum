@@ -1,7 +1,7 @@
 import pytest
 
 from spectrum.color import Color
-from spectrum.exceptions import InvalidOpacity
+from spectrum.exceptions import InvalidOpacityError
 
 
 class TestColorComparison:
@@ -57,7 +57,7 @@ class TestColor:
         assert self.color is not other_color
 
     def test_set_invalid_opacity(self):
-        with pytest.raises(InvalidOpacity):
+        with pytest.raises(InvalidOpacityError):
             self.color.opacity(2)
 
     def test_rgb(self):

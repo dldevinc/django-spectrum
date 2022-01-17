@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 from . import forms
 from .color import Color
-from .exceptions import InvalidColor
+from .exceptions import InvalidColorError
 
 
 def encode_color(color):
@@ -56,7 +56,7 @@ class ColorField(models.Field):
 
         try:
             return parse_color(value)
-        except InvalidColor:
+        except InvalidColorError:
             raise exceptions.ValidationError(
                 self.error_messages["invalid"], code="invalid", params={"value": value},
             )

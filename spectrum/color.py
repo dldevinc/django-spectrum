@@ -27,7 +27,7 @@ class Color:
 
         try:
             other_color = self.__class__(other)
-        except exceptions.InvalidColor:
+        except exceptions.InvalidColorError:
             return super().__eq__(other)
         else:
             return self._rgba == other_color._rgba
@@ -64,7 +64,7 @@ class Color:
         else:
             opacity = round(Decimal(str(value)) * 255)
             if not 0 <= opacity <= 255:
-                raise exceptions.InvalidOpacity(value)
+                raise exceptions.InvalidOpacityError(value)
 
             color_bytes = list(self._rgba[:3])
             color_bytes.append(opacity)

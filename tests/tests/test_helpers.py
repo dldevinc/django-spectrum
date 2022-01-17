@@ -9,7 +9,7 @@ from spectrum.helpers import (
     re_hexa,
     re_rgba,
 )
-from spectrum.exceptions import InvalidColorValue, InvalidColorType
+from spectrum.exceptions import InvalidColorValueError, InvalidColorTypeError
 
 
 class TestHexRegex:
@@ -177,52 +177,52 @@ class TestFormatColor:
         assert format_color([32, 64, 128, 72]) == (32, 64, 128, 72)
 
     def test_insufficient_hex_length(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("FF")
 
     def test_excessive_hex_length(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("FFAABBDDEE")
 
     def test_non_hex(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("XYZ")
 
     def test_insufficient_rgb_length(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("rgb(128, 192)")
 
     def test_excessive_rgb_length(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("rgb(32, 64, 92, 128, 255)")
 
     def test_rgb_negative(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("rgb(128, -32, 60)")
 
     def test_rgb_overbound(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("rgb(128, 192, 999)")
 
     def test_rgba_negative_opacity(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("rgb(128, 32, 60, -0.5)")
 
     def test_rgba_opacity_overbound(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color("rgba(128, 192, 0, 1.5)")
 
     def test_insufficient_iterable_length(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color([64, 128])
 
     def test_excessive_iterable_length(self):
-        with pytest.raises(InvalidColorValue):
+        with pytest.raises(InvalidColorValueError):
             format_color([128, 96, 48, 255, 255])
 
     def test_invalid_type(self):
-        with pytest.raises(InvalidColorType):
+        with pytest.raises(InvalidColorTypeError):
             format_color(None)
 
-        with pytest.raises(InvalidColorType):
+        with pytest.raises(InvalidColorTypeError):
             format_color(192)
