@@ -28,6 +28,26 @@ class TestColor:
     def setup_class(self):
         self.color = Color("#d2ceb080")
 
+    def test_red(self):
+        assert self.color.red == 210
+
+    def test_green(self):
+        assert self.color.green == 206
+
+    def test_blue(self):
+        assert self.color.blue == 176
+
+    def test_alpha(self):
+        assert self.color.alpha == 128
+
+    def test_opaque(self):
+        assert self.color.opaque is False
+        assert Color("dadada").opaque is True
+
+    def test_transparent(self):
+        assert self.color.transparent is False
+        assert Color("dadada00").transparent is True
+
     def test_hex(self):
         assert self.color.hex() == "#D2CEB0"
 
@@ -43,10 +63,6 @@ class TestColor:
         other_color = self.color.hexa("aabbccff")
         assert other_color == [170, 187, 204, 255]
         assert self.color is not other_color
-
-    def test_opaque(self):
-        assert self.color.opaque is False
-        assert Color("dadada").opaque is True
 
     def test_opacity(self):
         assert self.color.opacity() == 0.5

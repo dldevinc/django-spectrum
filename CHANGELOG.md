@@ -3,6 +3,8 @@
 ## [0.3.1](https://github.com/dldevinc/django-spectrum/tree/v0.3.1) - 2022-05-28
 ### Features
 - `Color` class now supports new RGBA notation: `rgba(R G B / A%)`.
+- Added some new properties to the `Color` class: 
+  `red`, `green`, `blue`, and `transparent`.
 
 ## [0.3.0](https://github.com/dldevinc/django-spectrum/tree/v0.3.0) - 2022-01-17
 - Drop support for Python 3.5

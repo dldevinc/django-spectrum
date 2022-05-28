@@ -39,8 +39,28 @@ class Color:
         return self._rgba[item]
 
     @property
-    def opaque(self):
-        return self._rgba[3] == 255
+    def red(self) -> int:
+        return self._rgba[0]
+
+    @property
+    def green(self) -> int:
+        return self._rgba[1]
+
+    @property
+    def blue(self) -> int:
+        return self._rgba[2]
+
+    @property
+    def alpha(self) -> int:
+        return self._rgba[3]
+
+    @property
+    def opaque(self) -> bool:
+        return self.alpha == 255
+
+    @property
+    def transparent(self) -> bool:
+        return self.alpha == 0
 
     def hex(self, value=None):
         if value is None:
