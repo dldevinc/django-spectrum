@@ -1,24 +1,26 @@
+import array
 import colorsys
+import copy
 from decimal import Decimal
 
 from . import exceptions, helpers
-from .typing import ColorType
+from .typing import ColorInputType
 
 
 class Color:
-    def __init__(self, color: ColorType):
-        self._rgba = helpers.format_color(color)
+    __slots__ = ("_rgba", )
+
+    def __init__(self, color: ColorInputType):
+        color_bytes = helpers.format_color(color)
+        self._rgba = array.array("B", color_bytes)
 
     def __str__(self):
-        if self.opaque:
-            return self.hex()
-        else:
-            return self.rgba()
+        return self.hex if self.opaque else self.rgba
 
     def __repr__(self):
         return "%s('%s')" % (
             self.__class__.__name__,
-            self.hex() if self.opaque else self.hexa(),
+            self.hex if self.opaque else self.hexa,
         )
 
     def __eq__(self, other):
@@ -38,54 +40,88 @@ class Color:
     def __getitem__(self, item):
         return self._rgba[item]
 
+    def __copy__(self):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        result._rgba = copy.copy(self._rgba)
+        return result
+
+    def __hash__(self):
+        return int(self.hexa, 16)
+
     @property
-    def opaque(self):
-        return self._rgba[3] == 255
+    def red(self) -> int:
+        return self._rgba[0]
 
-    def hex(self, value=None):
-        if value is None:
-            return '#{:02X}{:02X}{:02X}'.format(*self._rgba[:3])
-        else:
-            color_bytes = helpers.format_hexa(value)
-            color_bytes_list = list(color_bytes)
-            color_bytes_list[3] = self._rgba[3]  # keep current opacity
-            return type(self)(color_bytes_list)
+    @property
+    def green(self) -> int:
+        return self._rgba[1]
 
-    def hexa(self, value=None):
-        if value is None:
-            return '#{:02X}{:02X}{:02X}{:02X}'.format(*self._rgba)
-        else:
-            return type(self)(helpers.format_hexa(value))
+    @property
+    def blue(self) -> int:
+        return self._rgba[2]
 
-    def opacity(self, value=None):
-        if value is None:
-            # strip trailing zeros
-            return round(Decimal(self._rgba[3]) * 100 / 255) / 100
-        else:
-            opacity = round(Decimal(str(value)) * 255)
-            if not 0 <= opacity <= 255:
-                raise exceptions.InvalidOpacityError(value)
+    @property
+    def alpha(self) -> int:
+        """
+        :return: number between 0 and 255
+        """
+        return self._rgba[3]
 
-            color_bytes = list(self._rgba[:3])
-            color_bytes.append(opacity)
-            return type(self)(color_bytes)
+    @property
+    def opacity(self) -> Decimal:
+        """
+        :return: percentage of opacity from 0 to 1
+        """
+        return helpers.color_byte_to_percentage(self.alpha)
 
+    @property
+    def opaque(self) -> bool:
+        return self.alpha == 255
+
+    @property
+    def transparent(self) -> bool:
+        return self.alpha == 0
+
+    @property
+    def hex(self):
+        return "#{:02X}{:02X}{:02X}".format(*self._rgba[:3])
+
+    @property
+    def hexa(self):
+        return "#{:02X}{:02X}{:02X}{:02X}".format(*self._rgba)
+
+    @property
     def rgb(self):
         return "rgb({:d}, {:d}, {:d})".format(*self._rgba[:3])
 
+    @property
     def rgba(self):
-        return "rgba({:d}, {:d}, {:d}, {})".format(
-            self._rgba[0], self._rgba[1], self._rgba[2], self.opacity()
+        return "rgba({:d}, {:d}, {:d}, {:f})".format(
+            self._rgba[0],
+            self._rgba[1],
+            self._rgba[2],
+            self.opacity
         )
 
+    @property
     def hsl(self):
         h, l, s = colorsys.rgb_to_hls(*(x / 255 for x in self._rgba[:3]))
         return "hsl({:d}, {}%, {}%)".format(
-            round(h * 360), round(s * 1000) / 10, round(l * 1000) / 10
+            round(h * 360),
+            round(s * 100),
+            round(l * 100)
         )
 
+    @property
     def hsla(self):
         h, l, s = colorsys.rgb_to_hls(*(x / 255 for x in self._rgba[:3]))
-        return "hsla({:d}, {}%, {}%, {})".format(
-            round(h * 360), round(s * 1000) / 10, round(l * 1000) / 10, self.opacity()
+        return "hsla({:d}, {:d}%, {:d}%, {})".format(
+            round(h * 360),
+            round(s * 100),
+            round(l * 100),
+            self.opacity
         )
+
+    def as_tuple(self):
+        return tuple(self._rgba)

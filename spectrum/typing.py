@@ -1,4 +1,5 @@
 from typing import Iterable, Tuple
 
-ColorType = Iterable
-ColorBytes = Tuple[int, ...]
+ColorInputType = Iterable  # str, tuple, list, ColorBytes, etc.
+ColorByte = int
+ColorBytes = Tuple[ColorByte, ColorByte, ColorByte, ColorByte]
