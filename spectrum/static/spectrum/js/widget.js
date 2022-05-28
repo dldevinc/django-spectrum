@@ -2,9 +2,9 @@
     'use strict';
 
     function initWidgets(root) {
-        root = (typeof root === 'undefined') ? document.body : root;
-        root.querySelectorAll('.vColorField').forEach(function(widget) {
-            if (!widget.closest('.empty-form')) {
+        root = (typeof root === "undefined") ? document.body : root;
+        root.querySelectorAll(".vColorField").forEach(function(widget) {
+            if (!widget.closest(".empty-form")) {
                 var input = widget.querySelector("input");
 
                 Pickr.create({
