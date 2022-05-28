@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.1](https://github.com/dldevinc/django-spectrum/tree/v0.3.1) - 2022-05-28
+### Features
+- `Color` class now supports new RGBA notation: `rgba(R G B / A%)`.
+
 ## [0.3.0](https://github.com/dldevinc/django-spectrum/tree/v0.3.0) - 2022-01-17
 - Drop support for Python 3.5
 - Add support for Python 3.10, Django 3.2 and Django 4.0

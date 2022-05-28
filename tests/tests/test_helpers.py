@@ -1,15 +1,18 @@
+from decimal import Decimal
+
 import pytest
 
+from spectrum.exceptions import InvalidColorTypeError, InvalidColorValueError
 from spectrum.helpers import (
+    format_color,
     format_color_byte,
     format_color_bytes,
     format_hexa,
     format_rgba,
-    format_color,
+    fraction_to_color_byte,
     re_hexa,
     re_rgba,
 )
-from spectrum.exceptions import InvalidColorValueError, InvalidColorTypeError
 
 
 class TestHexRegex:
@@ -61,6 +64,28 @@ class TestRGBRegex:
         assert match is not None
         assert match.groups() == ("64", "128", "192", "0.5")
 
+    def test_rgba_new_notation(self):
+        match = re_rgba.fullmatch("rgba(64 128 192 / 52.5%)")
+        assert match is not None
+        assert match.groups() == ("64", "128", "192", "52.5%")
+
+
+class TestFractionToColorByte:
+    def test_opaque(self):
+        assert fraction_to_color_byte(1) == 255
+
+    def test_transparent(self):
+        assert fraction_to_color_byte(0) == 0
+
+    def test_float(self):
+        assert fraction_to_color_byte(0.7) == 178
+
+    def test_string(self):
+        assert fraction_to_color_byte('0.7') == 179  # no precision loss
+
+    def test_decimal(self):
+        assert fraction_to_color_byte(Decimal('0.7')) == 179
+
 
 class TestFormatColorByte:
     def test_none(self):
@@ -92,24 +117,36 @@ class TestFormatColorByte:
         assert format_color_byte("255") is 255
 
     def test_below_bounds(self):
-        with pytest.raises(ValueError):
+        with pytest.raises(OverflowError):
             format_color_byte("-1")
 
     def test_above_bounds(self):
-        with pytest.raises(ValueError):
+        with pytest.raises(OverflowError):
             format_color_byte("256")
 
 
 class TestFormatColorBytes:
     def test_insufficient_length(self):
-        with pytest.raises(ValueError):
+        with pytest.raises(OverflowError):
             format_color_bytes([128, 192])
 
     def test_excessive_length(self):
-        with pytest.raises(ValueError):
+        with pytest.raises(OverflowError):
             format_color_bytes([128, 192, 64, 0, 128])
 
-    def test_auto_opacity(self):
+    def test_below_bounds(self):
+        with pytest.raises(OverflowError):
+            format_color_bytes([0, -1, 0])
+
+    def test_above_bounds(self):
+        with pytest.raises(OverflowError):
+            format_color_bytes([0, 256, 0])
+
+    def test_non_numeric_value(self):
+        with pytest.raises(ValueError):
+            format_color_bytes([128, "abc", 64, 0, 128])
+
+    def test_opacity_added(self):
         assert format_color_bytes([128, "92", 64]) == (128, 92, 64, 255)
 
     def test_stability(self):
@@ -123,7 +160,7 @@ class TestFormatRGBA:
         assert format_rgba(["192", "128", "64"]) == (192, 128, 64, 255)
 
     def test_transparent(self):
-        assert format_rgba(["192", "128", "64", "0"]) == (192, 128, 64, 0)
+        assert format_rgba(["192", "128", "64", "0.2"]) == (192, 128, 64, 51)
 
     def test_opaque(self):
         assert format_rgba([94, 72, 156]) == (94, 72, 156, 255)
@@ -131,6 +168,9 @@ class TestFormatRGBA:
 
     def test_fraction_opacity(self):
         assert format_rgba([92, 40, 128, 0.5]) == (92, 40, 128, 128)
+
+    def test_percentage(self):
+        assert format_rgba([92, 40, 128, '70%']) == (92, 40, 128, 179)
 
 
 class TestFormatHEXA:

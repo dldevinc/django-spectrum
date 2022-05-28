@@ -2,11 +2,11 @@ import colorsys
 from decimal import Decimal
 
 from . import exceptions, helpers
-from .typing import ColorType
+from .typing import ColorInputType
 
 
 class Color:
-    def __init__(self, color: ColorType):
+    def __init__(self, color: ColorInputType):
         self._rgba = helpers.format_color(color)
 
     def __str__(self):
@@ -55,7 +55,8 @@ class Color:
         if value is None:
             return '#{:02X}{:02X}{:02X}{:02X}'.format(*self._rgba)
         else:
-            return type(self)(helpers.format_hexa(value))
+            color_bytes = helpers.format_hexa(value)
+            return type(self)(color_bytes)
 
     def opacity(self, value=None):
         if value is None:
