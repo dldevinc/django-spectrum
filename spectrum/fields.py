@@ -10,7 +10,7 @@ from .exceptions import InvalidColorError
 
 
 def encode_color(color):
-    return color.hex() if color.opaque else color.hexa()
+    return color.hex if color.opaque else color.hexa
 
 
 def parse_color(value: str):
@@ -73,7 +73,7 @@ class ColorField(models.Field):
 
     def formfield(self, **kwargs):
         defaults = {
-            'form_class': forms.ColorField,
+            "form_class": forms.ColorField,
         }
         defaults.update(kwargs)
         return super().formfield(**defaults)

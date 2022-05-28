@@ -1,6 +1,12 @@
 # Change Log
 
-## [0.3.1](https://github.com/dldevinc/django-spectrum/tree/v0.3.1) - 2022-05-28
+## [0.4.0](https://github.com/dldevinc/django-spectrum/tree/v0.4.0) - 2022-05-28
+### ⚠ BREAKING CHANGES
+- The `Color` instances now immutable and hashable.
+- All methods of `Color` class was converted to properies.
+  So for example instead of `Color.rgb()` you should use `Color.rgb`.
+- `InvalidOpacityError` exception was removed.
+- Deprecated exceptions was removed.
 ### Features
 - `Color` class now supports new RGBA notation: `rgba(R G B / A%)`.
 - Added some new properties to the `Color` class: 

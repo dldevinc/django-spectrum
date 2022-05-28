@@ -1,7 +1,7 @@
 # django-spectrum
 Provides a colorpicker field for Django
 
-![django-spectrum](http://joxi.ru/l2ZPn43iRE3yDr.png)
+![image](https://user-images.githubusercontent.com/6928240/170836333-eb125dac-e617-44d3-9f3b-eefa8501b373.png)
 
 [![PyPI](https://img.shields.io/pypi/v/django-spectrum.svg)](https://pypi.org/project/django-spectrum/)
 [![Build Status](https://travis-ci.com/dldevinc/django-spectrum.svg?branch=master)](https://travis-ci.org/dldevinc/django-spectrum)
@@ -44,21 +44,27 @@ from spectrum.color import Color
 
 c = Color("#FFDA0080")
 
->>> print(c.opaque)
-False
+>>> print(c.red)
+255
 
->>> print(c.hex())
-"#FFDA00"
+>>> print(c.alpha)
+128
 
->>> print(c.hexa())
-"#FFDA0080"
+>>> print(c.hex)
+#FFDA00
 
->>> print(c.rgba())
-"rgba(255, 218, 0, 0.5)"
+>>> print(c.hexa)
+#FFDA0080
 
->>> print(c.opacity())
+>>> print(c.rgb)
+rgba(255, 218, 0)
+
+>>> print(c.rgba)
+rgba(255, 218, 0, 0.5)
+
+>>> print(c.opacity)
 0.5
 
->>> print(c.hsla())
-"hsla(51, 100.0%, 50.0%, 0.5)"
+>>> print(c.as_tuple())
+(255, 218, 0, 128)
 ```

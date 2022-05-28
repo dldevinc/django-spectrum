@@ -29,6 +29,25 @@ def fraction_to_color_byte(value: Union[str, int, float, Decimal]) -> ColorByte:
     )
 
 
+def color_byte_to_percentage(value: ColorByte) -> Decimal:
+    """
+    Examples:
+         0 => Decimal(0)
+         128 => Decimal('0.50')
+         255 => Decimal('1')
+
+    :param value: often an alpha component from 0 to 255
+    :return: percentage from 0 to 1
+    """
+    percentage = (Decimal(value) / 255).quantize(Decimal("0.01"))
+    normalized = percentage.normalize()
+    sign, digits, exponent = normalized.as_tuple()
+    if exponent > 0:
+        return Decimal((sign, digits + (0,) * exponent, 0))
+    else:
+        return normalized
+
+
 def format_color_byte(value: Union[int, str]) -> ColorByte:
     """
     :param value: R, G, B or A component

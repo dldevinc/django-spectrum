@@ -10,7 +10,7 @@ from .widgets import ColorWidget
 class ColorField(forms.CharField):
     widget = ColorWidget
     default_error_messages = {
-        'invalid': _('Enter a valid color.'),
+        "invalid": _("Enter a valid color."),
     }
 
     def clean(self, value):
@@ -21,5 +21,5 @@ class ColorField(forms.CharField):
             return Color(value)
         except InvalidColorError:
             raise exceptions.ValidationError(
-                self.error_messages['invalid'], code='invalid'
+                self.error_messages["invalid"], code="invalid"
             )

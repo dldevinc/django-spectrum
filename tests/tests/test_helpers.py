@@ -81,10 +81,10 @@ class TestFractionToColorByte:
         assert fraction_to_color_byte(0.7) == 178
 
     def test_string(self):
-        assert fraction_to_color_byte('0.7') == 179  # no precision loss
+        assert fraction_to_color_byte("0.7") == 179  # no precision loss
 
     def test_decimal(self):
-        assert fraction_to_color_byte(Decimal('0.7')) == 179
+        assert fraction_to_color_byte(Decimal("0.7")) == 179
 
 
 class TestFormatColorByte:
