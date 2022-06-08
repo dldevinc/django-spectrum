@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.1](https://github.com/dldevinc/django-spectrum/tree/v0.4.1) - 2022-06-08
+### Bug Fixes
+- Fixed an issue where an `AttributeError` is raised for non-`Color` default values.
+
 ## [0.4.0](https://github.com/dldevinc/django-spectrum/tree/v0.4.0) - 2022-05-28
 ### ⚠ BREAKING CHANGES
 - The `Color` instances now immutable and hashable.
