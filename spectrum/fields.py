@@ -45,6 +45,7 @@ class ColorField(models.Field):
     def from_db_value(self, value, *args, **kwargs):
         if value in self.empty_values:
             return None
+
         return parse_color(value)
 
     def to_python(self, value):
@@ -63,8 +64,13 @@ class ColorField(models.Field):
 
     def get_prep_value(self, value):
         value = super().get_prep_value(value)
+
         if value in self.empty_values:
             return ""
+
+        if not isinstance(value, Color):
+            value = parse_color(value)
+
         return encode_color(value)
 
     def value_to_string(self, obj):

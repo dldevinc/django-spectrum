@@ -57,7 +57,7 @@ c = Color("#FFDA0080")
 #FFDA0080
 
 >>> print(c.rgb)
-rgba(255, 218, 0)
+rgb(255, 218, 0)
 
 >>> print(c.rgba)
 rgba(255, 218, 0, 0.5)

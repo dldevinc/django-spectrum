@@ -8,6 +8,20 @@ from .typing import ColorInputType
 
 
 class Color:
+    """
+    Possible inputs:
+        Color("FFFF00")
+        Color("#FFFF00")
+        Color("#ffff0080")
+
+        Color("rgb(255, 255, 0)")
+        Color("rgba(255, 255, 0, 0.5)")
+        Color("rgba(255 255 0 / 50%)")
+
+        Color([255, 255, 0])
+        Color([255, 255, 0, 128])
+    """
+
     __slots__ = ("_rgba", )
 
     def __init__(self, color: ColorInputType):
