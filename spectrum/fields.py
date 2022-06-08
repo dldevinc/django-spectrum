@@ -63,9 +63,14 @@ class ColorField(models.Field):
 
     def get_prep_value(self, value):
         value = super().get_prep_value(value)
+
         if value in self.empty_values:
             return ""
-        return encode_color(value)
+
+        if isinstance(value, Color):
+            return encode_color(value)
+
+        return value
 
     def value_to_string(self, obj):
         value = self.value_from_object(obj)
