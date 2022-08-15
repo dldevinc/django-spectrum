@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.5.0](https://github.com/dldevinc/django-spectrum/tree/v0.5.0) - 2022-08-15
+### Features
+- Added support for Django 4.1.
+
 ## [0.4.1](https://github.com/dldevinc/django-spectrum/tree/v0.4.1) - 2022-06-08
 ### Bug Fixes
 - Fixed an issue where an `AttributeError` is raised for non-`Color` default values.
