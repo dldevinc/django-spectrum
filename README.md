@@ -1,4 +1,5 @@
 # django-spectrum
+
 Provides a colorpicker field for Django
 
 ![image](https://user-images.githubusercontent.com/6928240/170836333-eb125dac-e617-44d3-9f3b-eefa8501b373.png)
@@ -7,16 +8,20 @@ Provides a colorpicker field for Django
 [![Build Status](https://travis-ci.com/dldevinc/django-spectrum.svg?branch=master)](https://travis-ci.org/dldevinc/django-spectrum)
 
 ## Compatibility
-* `python` >= 3.6
-* `django` >= 1.11
+
+-   `python` >= 3.6
+-   `django` >= 1.11
 
 ## Quickstart
+
 Install `django-spectrum`:
+
 ```bash
 pip install django-spectrum
 ```
 
 Add it to your `INSTALLED_APPS` list:
+
 ```python
 INSTALLED_APPS = (
     ...
@@ -25,6 +30,7 @@ INSTALLED_APPS = (
 ```
 
 Then add it to your models:
+
 ```python
 from django.db import models
 from spectrum.fields import ColorField
@@ -34,11 +40,13 @@ class MyModel(models.Model):
 ```
 
 ## Color class
-The module defines a `Color` class which is used to represent the `ColorField` 
-attribute on the model. The `Color` class can also be used standalone without 
+
+The module defines a `Color` class which is used to represent the `ColorField`
+attribute on the model. The `Color` class can also be used standalone without
 any Django model.
 
 Some examples of funcionality provided by the `Color` class:
+
 ```python
 from spectrum.color import Color
 
