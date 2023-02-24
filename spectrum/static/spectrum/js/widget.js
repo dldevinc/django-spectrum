@@ -57,4 +57,4 @@
         .on("formset:added", function (event, $row, prefix) {
             initWidgets($row.get(0));
         });
-})(django.jQuery || jQuery);
+})((window.django && window.django.jQuery) || jQuery);
