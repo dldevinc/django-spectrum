@@ -1,16 +1,22 @@
 # Change Log
 
+## [0.5.3](https://github.com/dldevinc/django-spectrum/tree/v0.5.3) - 2023-04-16
+
+### Features
+
+-   Test against Django 4.2.
+
 ## [0.5.2](https://github.com/dldevinc/django-spectrum/tree/v0.5.2) - 2023-02-24
 
 ### Features
 
-- Add Wagtail compatibility.
+-   Add Wagtail compatibility.
 
 ## [0.5.1](https://github.com/dldevinc/django-spectrum/tree/v0.5.1) - 2023-01-09
 
 ### Features
 
-- Add Python 3.11 support (no code changes were needed, but now we test this release).
+-   Add Python 3.11 support (no code changes were needed, but now we test this release).
 
 ## [0.5.0](https://github.com/dldevinc/django-spectrum/tree/v0.5.0) - 2022-08-15
 
