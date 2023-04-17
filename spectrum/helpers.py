@@ -11,9 +11,9 @@ from .typing import ColorByte, ColorBytes, ColorInputType
 re_hexa = re.compile(r'#?([\dA-Fa-f]{3,4}|[\dA-Fa-f]{6}|[\dA-Fa-f]{8})')
 
 # RGBA color in one of two possible notations:
-#   rgba(R, G, B, A) or rgba(R G B / A%)
+#   rgba(R, G, B, A) or rgb(R G B / A%)
 re_rgba = re.compile(
-    r'rgba?[\D]+?([-\d]+)[\D]+?([-\d]+)[\D]+?([-\d]+)(?:[\D]+?([-\d.]+%?))?[\D]+'
+    r'rgba?\D+?([-\d]+)\D+?([-\d]+)\D+?([-\d]+)(?:\D+?([-\d.]+%?))?\D+'
 )
 
 
