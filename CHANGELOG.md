@@ -1,6 +1,10 @@
 # Change Log
 
-## [0.5.3](https://github.com/dldevinc/django-spectrum/tree/v0.5.3) - 2023-04-16
+## [0.5.3](https://github.com/dldevinc/django-spectrum/tree/v0.5.3) - 2023-08-18
+
+### Bug Fixes
+
+-   Issue with `collectstatic` command failing due to missing source map.
 
 ### Features
 
